@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Nguyen Long | Backend Developer</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+    />
+
+    <!-- FONT AWESOME -->
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+
+        :root{
+            --bg:#07130f;
+            --card:#0d1f19;
+            --primary:#2ecc71;
+            --primary2:#27ae60;
+            --white:#ffffff;
+            --text:#d6e2dd;
+            --gray:#8ca39b;
+            --border:rgba(255,255,255,0.08);
+            --shadow:0 10px 40px rgba(0,0,0,0.35);
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:'Inter',sans-serif;
+            background:var(--bg);
+            color:var(--white);
+            overflow-x:hidden;
+        }
+
+        /* ================= GLOBAL BACKGROUND ================= */
+
+        body::before{
+            content:"";
+            position:fixed;
+            width:700px;
+            height:700px;
+            background:radial-gradient(circle,rgba(46,204,113,0.12),transparent 70%);
+            top:-300px;
+            right:-200px;
+            z-index:-10;
+        }
+
+        body::after{
+            content:"";
+            position:fixed;
+            width:600px;
+            height:600px;
+            background:radial-gradient(circle,rgba(39,174,96,0.08),transparent 70%);
+            bottom:-300px;
+            left:-200px;
+            z-index:-10;
+        }
+
+        .container{
+            width:90%;
+            max-width:1200px;
+            margin:auto;
+        }
+
+        section{
+            padding:120px 0;
+            position:relative;
+        }
+
+        /* ================= HEADER ================= */
+
+        header{
+            position:fixed;
+            width:100%;
+            top:0;
+            left:0;
+            z-index:1000;
+            backdrop-filter:blur(14px);
+            background:rgba(7,19,15,0.72);
+            border-bottom:1px solid rgba(255,255,255,0.05);
+        }
+
+        .navbar{
+            height:85px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .logo{
+            font-size:1.9rem;
+            font-weight:800;
+            color:var(--primary);
+            letter-spacing:1px;
+        }
+
+        .nav-links{
+            display:flex;
+            list-style:none;
+            gap:35px;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:var(--text);
+            font-weight:500;
+            position:relative;
+            transition:0.3s;
+        }
+
+        .nav-links a::after{
+            content:"";
+            position:absolute;
+            left:0;
+            bottom:-8px;
+            width:0%;
+            height:2px;
+            background:var(--primary);
+            transition:0.3s;
+        }
+
+        .nav-links a:hover{
+            color:var(--primary);
+        }
+
+        .nav-links a:hover::after{
+            width:100%;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            overflow:hidden;
+            position:relative;
+        }
+
+        /* HERO IMAGE */
+
+        .hero::before{
+            content:"";
+            position:absolute;
+            inset:0;
+
+            background:
+                    linear-gradient(
+                            rgba(7,19,15,0.9),
+                            rgba(7,19,15,0.92)
+                    ),
+
+                    url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2070&auto=format&fit=crop");
+
+            background-size:cover;
+            background-position:center;
+
+            z-index:-5;
+        }
+
+        /* MATRIX CODE */
+
+        .code-background{
+            position:absolute;
+            inset:0;
+            overflow:hidden;
+            z-index:-4;
+            pointer-events:none;
+        }
+
+        .code-column{
+            position:absolute;
+            top:-100%;
+            color:rgba(46,204,113,0.15);
+            font-size:14px;
+            line-height:20px;
+            white-space:pre;
+            font-family:monospace;
+
+            animation:matrixFall linear infinite;
+        }
+
+        @keyframes matrixFall{
+
+            0%{
+                transform:translateY(-100%);
+            }
+
+            100%{
+                transform:translateY(220%);
+            }
+
+        }
+
+        /* CYBER GRID */
+
+        .cyber-grid{
+            position:absolute;
+            inset:0;
+
+            background-image:
+                    linear-gradient(rgba(46,204,113,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(46,204,113,0.04) 1px, transparent 1px);
+
+            background-size:60px 60px;
+
+            animation:gridMove 10s linear infinite;
+
+            z-index:-3;
+        }
+
+        @keyframes gridMove{
+
+            0%{
+                transform:translateY(0);
+            }
+
+            100%{
+                transform:translateY(60px);
+            }
+
+        }
+
+        /* SCAN EFFECT */
+
+        .scan-line{
+            position:absolute;
+            width:100%;
+            height:120px;
+
+            background:linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(46,204,113,0.06),
+                    transparent
+            );
+
+            animation:scanMove 6s linear infinite;
+
+            z-index:-2;
+        }
+
+        @keyframes scanMove{
+
+            0%{
+                top:-150px;
+            }
+
+            100%{
+                top:100%;
+            }
+
+        }
+
+        /* GLOW */
+
+        .glow{
+            position:absolute;
+            border-radius:50%;
+            filter:blur(100px);
+            z-index:-1;
+        }
+
+        .glow1{
+            width:300px;
+            height:300px;
+            background:rgba(46,204,113,0.15);
+            top:120px;
+            right:100px;
+            animation:floatGlow 6s ease-in-out infinite;
+        }
+
+        .glow2{
+            width:220px;
+            height:220px;
+            background:rgba(46,204,113,0.1);
+            bottom:100px;
+            left:100px;
+            animation:floatGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes floatGlow{
+
+            0%{
+                transform:translateY(0);
+            }
+
+            50%{
+                transform:translateY(30px);
+            }
+
+            100%{
+                transform:translateY(0);
+            }
+
+        }
+
+        .hero-container{
+            display:grid;
+            grid-template-columns:1.1fr 0.9fr;
+            gap:60px;
+            align-items:center;
+            position:relative;
+            z-index:5;
+        }
+
+        .hero-subtitle{
+            color:var(--primary);
+            font-size:1rem;
+            font-weight:600;
+            letter-spacing:3px;
+            margin-bottom:15px;
+        }
+
+        .hero h1{
+            font-size:5rem;
+            line-height:1.05;
+            margin-bottom:20px;
+            font-weight:800;
+        }
+
+        .hero h1 span{
+            color:var(--primary);
+        }
+
+        /* TERMINAL BAR */
+
+        .terminal-bar{
+            display:flex;
+            gap:8px;
+            margin-bottom:25px;
+        }
+
+        .dot{
+            width:12px;
+            height:12px;
+            border-radius:50%;
+        }
+
+        .red{
+            background:#ff5f56;
+        }
+
+        .yellow{
+            background:#ffbd2e;
+        }
+
+        .green{
+            background:#27c93f;
+        }
+
+        /* TYPING */
+
+        .typing{
+            color:var(--primary);
+            border-right:3px solid var(--primary);
+            white-space:nowrap;
+            overflow:hidden;
+            width:0;
+
+            animation:
+                    typing 4s steps(35,end) forwards,
+                    blink 0.8s infinite;
+        }
+
+        @keyframes typing{
+
+            from{
+                width:0;
+            }
+
+            to{
+                width:100%;
+            }
+
+        }
+
+        @keyframes blink{
+
+            50%{
+                border-color:transparent;
+            }
+
+        }
+
+        .hero p{
+            color:var(--gray);
+            line-height:1.9;
+            margin:30px 0;
+            max-width:650px;
+            font-size:1.05rem;
+        }
+
+        .hero-buttons{
+            display:flex;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            padding:16px 32px;
+            border-radius:14px;
+            border:none;
+            text-decoration:none;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.35s;
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+        }
+
+        .btn-primary{
+            background:linear-gradient(135deg,var(--primary),var(--primary2));
+            color:white;
+            box-shadow:0 10px 25px rgba(46,204,113,0.25);
+        }
+
+        .btn-primary:hover{
+            transform:translateY(-4px);
+            box-shadow:0 15px 30px rgba(46,204,113,0.35);
+        }
+
+        .btn-outline{
+            border:1px solid rgba(255,255,255,0.1);
+            background:rgba(255,255,255,0.03);
+            color:white;
+        }
+
+        .btn-outline:hover{
+            background:rgba(255,255,255,0.08);
+            transform:translateY(-4px);
+        }
+
+        /* AVATAR */
+
+        .hero-image{
+            display:flex;
+            justify-content:center;
+        }
+
+        .avatar-box{
+            width:390px;
+            height:390px;
+            border-radius:35px;
+            overflow:hidden;
+            position:relative;
+            border:1px solid rgba(255,255,255,0.08);
+            background:#10231d;
+            box-shadow:0 20px 50px rgba(0,0,0,0.45);
+        }
+
+        .avatar-box::before{
+            content:"";
+            position:absolute;
+            inset:-3px;
+            background:linear-gradient(
+                    135deg,
+                    var(--primary),
+                    transparent,
+                    var(--primary)
+            );
+
+            border-radius:35px;
+            z-index:-1;
+            filter:blur(25px);
+            opacity:0.8;
+
+            animation:rotateGlow 6s linear infinite;
+        }
+
+        @keyframes rotateGlow{
+
+            0%{
+                transform:rotate(0deg);
+            }
+
+            100%{
+                transform:rotate(360deg);
+            }
+
+        }
+
+        .avatar-box img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        /* ================= SECTION TITLE ================= */
+
+        .section-title{
+            text-align:center;
+            margin-bottom:70px;
+        }
+
+        .section-title h2{
+            font-size:3rem;
+            margin-bottom:15px;
+        }
+
+        .section-title span{
+            color:var(--primary);
+        }
+
+        .section-title p{
+            color:var(--gray);
+        }
+
+        /* REVEAL */
+
+        .reveal{
+            opacity:0;
+            transform:translateY(60px);
+            transition:all 1s ease;
+        }
+
+        .reveal.active{
+            opacity:1;
+            transform:translateY(0);
+        }
+
+        /* ================= CARDS ================= */
+
+        .glass-card,
+        .skill-card,
+        .project-card,
+        .contact-card{
+            background:rgba(255,255,255,0.03);
+            border:1px solid rgba(255,255,255,0.06);
+            backdrop-filter:blur(14px);
+        }
+
+        /* ABOUT */
+
+        .about-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+        }
+
+        .glass-card{
+            border-radius:28px;
+            padding:40px;
+            transition:0.35s;
+        }
+
+        .glass-card:hover{
+            transform:translateY(-8px);
+            border-color:rgba(46,204,113,0.25);
+        }
+
+        .glass-card h3{
+            color:var(--primary);
+            margin-bottom:20px;
+            font-size:1.8rem;
+        }
+
+        .glass-card p{
+            color:var(--gray);
+            line-height:1.9;
+            margin-bottom:18px;
+        }
+
+        .stats{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:20px;
+        }
+
+        .stat-card{
+            padding:30px;
+            border-radius:24px;
+            background:rgba(255,255,255,0.03);
+            border:1px solid rgba(255,255,255,0.05);
+            text-align:center;
+            transition:0.35s;
+        }
+
+        .stat-card:hover{
+            transform:translateY(-6px);
+            background:rgba(46,204,113,0.08);
+        }
+
+        .stat-card i{
+            font-size:2rem;
+            color:var(--primary);
+            margin-bottom:15px;
+        }
+
+        .stat-card h4{
+            font-size:2rem;
+            margin-bottom:10px;
+        }
+
+        .stat-card p{
+            color:var(--gray);
+        }
+
+        /* SKILLS */
+
+        .skills-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:25px;
+        }
+
+        .skill-card{
+            border-radius:24px;
+            padding:35px;
+            text-align:center;
+            transition:0.35s;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .skill-card:hover{
+            transform:translateY(-10px);
+            border-color:rgba(46,204,113,0.25);
+        }
+
+        .skill-card i{
+            font-size:2.7rem;
+            color:var(--primary);
+            margin-bottom:20px;
+        }
+
+        /* PROJECTS */
+
+        .project-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+            gap:35px;
+        }
+
+        .project-card{
+            border-radius:30px;
+            overflow:hidden;
+            transition:0.35s;
+        }
+
+        .project-card:hover{
+            transform:
+                    translateY(-12px)
+                    rotateX(4deg)
+                    rotateY(-4deg);
+
+            box-shadow:0 20px 40px rgba(0,0,0,0.4);
+
+            border-color:rgba(46,204,113,0.25);
+        }
+
+        .project-top{
+            height:230px;
+            background:linear-gradient(135deg,#17352b,#10231d);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .project-top i{
+            font-size:5rem;
+            color:var(--primary);
+        }
+
+        .project-content{
+            padding:35px;
+        }
+
+        .project-content h3{
+            font-size:1.6rem;
+            margin-bottom:15px;
+        }
+
+        .project-content p{
+            color:var(--gray);
+            line-height:1.8;
+            margin-bottom:25px;
+        }
+
+        .project-btn{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:14px;
+            background:linear-gradient(135deg,var(--primary),var(--primary2));
+            color:white;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .project-btn:hover{
+            transform:translateY(-3px);
+        }
+
+        /* CONTACT */
+
+        .contact-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+        }
+
+        .contact-card{
+            padding:40px;
+            border-radius:28px;
+        }
+
+        .contact-card h3{
+            color:var(--primary);
+            font-size:2rem;
+            margin-bottom:25px;
+        }
+
+        .contact-item{
+            display:flex;
+            gap:20px;
+            margin-bottom:25px;
+            align-items:center;
+        }
+
+        .contact-item i{
+            width:55px;
+            height:55px;
+            border-radius:50%;
+            background:rgba(46,204,113,0.12);
+            color:var(--primary);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .contact-item p{
+            color:var(--gray);
+        }
+
+        .form-group{
+            margin-bottom:20px;
+        }
+
+        .form-group input,
+        .form-group textarea{
+            width:100%;
+            padding:16px;
+            border-radius:14px;
+            border:1px solid rgba(255,255,255,0.06);
+            background:rgba(255,255,255,0.03);
+            color:white;
+            outline:none;
+            font-family:inherit;
+        }
+
+        .form-group textarea{
+            resize:none;
+        }
+
+        /* FOOTER */
+
+        footer{
+            padding:35px 0;
+            text-align:center;
+            color:var(--gray);
+            border-top:1px solid rgba(255,255,255,0.05);
+        }
+
+        /* MODAL */
+
+        .modal{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.75);
+            display:none;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+            z-index:2000;
+        }
+
+        .modal-content{
+            width:100%;
+            max-width:650px;
+            background:#0f221c;
+            border-radius:28px;
+            padding:40px;
+            position:relative;
+            border:1px solid rgba(255,255,255,0.08);
+
+            animation:popup 0.35s ease;
+        }
+
+        @keyframes popup{
+
+            from{
+                opacity:0;
+                transform:scale(0.85);
+            }
+
+            to{
+                opacity:1;
+                transform:scale(1);
+            }
+
+        }
+
+        .close-btn{
+            position:absolute;
+            top:15px;
+            right:24px;
+            font-size:2rem;
+            cursor:pointer;
+        }
+
+        .modal-content h2{
+            color:var(--primary);
+            margin-bottom:20px;
+        }
+
+        .modal-content p,
+        .modal-content li{
+            color:var(--gray);
+            line-height:1.8;
+            margin-bottom:12px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:980px){
+
+            .hero-container,
+            .about-grid,
+            .contact-grid{
+                grid-template-columns:1fr;
+            }
+
+            .hero{
+                padding-top:120px;
+            }
+
+            .hero-content{
+                text-align:center;
+            }
+
+            .hero-buttons{
+                justify-content:center;
+            }
+
+            .hero p{
+                margin:auto auto 35px;
+            }
+
+            .terminal-bar{
+                justify-content:center;
+            }
+
+        }
+
+        @media(max-width:768px){
+
+            .navbar{
+                flex-direction:column;
+                height:auto;
+                padding:20px 0;
+            }
+
+            .nav-links{
+                margin-top:15px;
+                gap:18px;
+                flex-wrap:wrap;
+                justify-content:center;
+            }
+
+            .hero h1{
+                font-size:3.2rem;
+            }
+
+            .section-title h2{
+                font-size:2.4rem;
+            }
+
+            .avatar-box{
+                width:290px;
+                height:290px;
+            }
+
+            .stats{
+                grid-template-columns:1fr;
+            }
+
+            .typing{
+                white-space:normal;
+                border-right:none;
+                animation:none;
+                width:100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="container navbar">
+
+        <div class="logo">LongDev.</div>
+
+        <ul class="nav-links">
+
+            <li><a href="#home">Home</a></li>
+
+            <li><a href="#about">About</a></li>
+
+            <li><a href="#skills">Skills</a></li>
+
+            <li><a href="#projects">Projects</a></li>
+
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+    </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <!-- MATRIX BACKGROUND -->
+
+    <div class="code-background" id="matrix"></div>
+
+    <!-- CYBER GRID -->
+
+    <div class="cyber-grid"></div>
+
+    <!-- SCAN -->
+
+    <div class="scan-line"></div>
+
+    <!-- GLOW -->
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+
+    <div class="container hero-container">
+
+        <!-- CONTENT -->
+
+        <div class="hero-content">
+
+            <div class="terminal-bar">
+
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+
+            </div>
+
+            <p class="hero-subtitle">
+                BACKEND DEVELOPER INTERN
+            </p>
+
+            <h1>
+                Hi, I'm <span>Nguyen Long</span>
+            </h1>
+
+            <h2 class="typing">
+                Building scalable backend systems & APIs
+            </h2>
+
+            <p>
+                Passionate about Java, Spring Boot, PostgreSQL,
+                JWT Authentication, RESTful APIs, and building
+                modern scalable applications with clean architecture.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fa-solid fa-code"></i>
+                    View Projects
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- AVATAR -->
+
+        <div class="hero-image">
+
+            <!-- Đặt avatar.png cùng thư mục -->
+
+            <div class="avatar-box">
+
+                <img src="avatar.png" alt="Avatar">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="reveal">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>About <span>Me</span></h2>
+
+            <p>
+                Backend developer who loves scalable architecture
+            </p>
+
+        </div>
+
+        <div class="about-grid">
+
+            <div class="glass-card">
+
+                <h3>Who Am I?</h3>
+
+                <p>
+                    I am a Backend Developer Intern passionate about
+                    building secure, scalable, and maintainable backend systems.
+                </p>
+
+                <p>
+                    My main focus is Java Backend Development using Spring Boot,
+                    PostgreSQL, RESTful APIs, JWT Authentication,
+                    and modern software architecture.
+                </p>
+
+                <p>
+                    I enjoy solving real-world problems, optimizing performance,
+                    and continuously learning new technologies.
+                </p>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-code"></i>
+
+                    <h4>10+</h4>
+
+                    <p>Projects</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-server"></i>
+
+                    <h4>REST API</h4>
+
+                    <p>Development</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <i class="fa-brands fa-java"></i>
+
+                    <h4>Java</h4>
+
+                    <p>Spring Boot</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-database"></i>
+
+                    <h4>PostgreSQL</h4>
+
+                    <p>Database</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills" class="reveal">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>My <span>Skills</span></h2>
+
+            <p>
+                Technologies and tools I work with
+            </p>
+
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <i class="fa-brands fa-java"></i>
+                <h3>Java</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-solid fa-leaf"></i>
+                <h3>Spring Boot</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-solid fa-database"></i>
+                <h3>PostgreSQL</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>JWT</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-solid fa-server"></i>
+                <h3>RESTful API</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-git-alt"></i>
+                <h3>Git</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-html5"></i>
+                <h3>HTML5</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-css3-alt"></i>
+                <h3>CSS3</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-js"></i>
+                <h3>JavaScript</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects" class="reveal">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Featured <span>Projects</span></h2>
+
+            <p>
+                Some projects that I have worked on
+            </p>
+
+        </div>
+
+        <div class="project-grid">
+
+            <!-- PROJECT 1 -->
+
+            <div class="project-card">
+
+                <div class="project-top">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>OnlineShop</h3>
+
+                    <p>
+                        B2C e-commerce system with inventory management
+                        and VNPAY payment integration.
+                    </p>
+
+                    <button class="project-btn" data-modal="modal1">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- PROJECT 2 -->
+
+            <div class="project-card">
+
+                <div class="project-top">
+
+                    <i class="fa-solid fa-gamepad"></i>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>Gaming Shop</h3>
+
+                    <p>
+                        Gaming account marketplace with dynamic filters
+                        and responsive UI.
+                    </p>
+
+                    <button class="project-btn" data-modal="modal2">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="reveal">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Contact <span>Me</span></h2>
+
+            <p>
+                Let's connect and build something amazing
+            </p>
+
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="contact-card">
+
+                <h3>Get In Touch</h3>
+
+                <div class="contact-item">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <div>
+                        <h4>Email</h4>
+                        <p>example@gmail.com</p>
+                    </div>
+
+                </div>
+
+                <div class="contact-item">
+
+                    <i class="fa-brands fa-github"></i>
+
+                    <div>
+                        <h4>GitHub</h4>
+                        <p>github.com/yourgithub</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="contact-card">
+
+                <h3>Send Message</h3>
+
+                <form>
+
+                    <div class="form-group">
+
+                        <input type="text" placeholder="Your Name">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <input type="email" placeholder="Your Email">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <textarea rows="6" placeholder="Your Message"></textarea>
+
+                    </div>
+
+                    <button class="btn btn-primary">
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                        Send Message
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Nguyen Long | Backend Developer Portfolio
+
+</footer>
+
+<!-- MODAL 1 -->
+
+<div class="modal" id="modal1">
+
+    <div class="modal-content">
+
+        <span class="close-btn">&times;</span>
+
+        <h2>OnlineShop</h2>
+
+        <p>
+            Complete B2C e-commerce platform with inventory management,
+            authentication, and VNPAY integration.
+        </p>
+
+        <ul>
+
+            <li>Spring Boot Backend</li>
+
+            <li>JWT Authentication</li>
+
+            <li>RESTful API</li>
+
+            <li>PostgreSQL Database</li>
+
+            <li>VNPAY Payment Gateway</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- MODAL 2 -->
+
+<div class="modal" id="modal2">
+
+    <div class="modal-content">
+
+        <span class="close-btn">&times;</span>
+
+        <h2>Gaming Shop</h2>
+
+        <p>
+            Gaming marketplace with filtering system,
+            account management, and modern responsive UI.
+        </p>
+
+        <ul>
+
+            <li>Dynamic Filter System</li>
+
+            <li>Modern UI/UX</li>
+
+            <li>Responsive Design</li>
+
+            <li>RESTful Architecture</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+    // ================= MATRIX CODE EFFECT =================
+
+    const matrix = document.getElementById("matrix");
+
+    const chars =
+        `
+0101010101
+class BackendDeveloper
+public static void main
+SpringBootApplication
+@RestController
+@PostMapping
+@GetMapping
+JWTAuthentication
+PostgreSQL
+Hibernate
+RESTfulAPI
+System.out.println
+SELECT * FROM users
+INSERT INTO projects
+Git commit push
+docker-compose up
+npm run dev
+Authentication Success
+ACCESS GRANTED
+`;
+
+    for(let i = 0; i < 35; i++){
+
+        const column = document.createElement("div");
+
+        column.classList.add("code-column");
+
+        column.style.left = Math.random() * 100 + "%";
+
+        column.style.animationDuration =
+            8 + Math.random() * 12 + "s";
+
+        column.style.animationDelay =
+            Math.random() * 5 + "s";
+
+        column.innerText = chars;
+
+        matrix.appendChild(column);
+
+    }
+
+    // ================= MODAL =================
+
+    const projectButtons =
+        document.querySelectorAll(".project-btn");
+
+    const modals =
+        document.querySelectorAll(".modal");
+
+    const closeButtons =
+        document.querySelectorAll(".close-btn");
+
+    projectButtons.forEach((button)=>{
+
+        button.addEventListener("click",()=>{
+
+            const modalId =
+                button.getAttribute("data-modal");
+
+            document.getElementById(modalId)
+                .style.display = "flex";
+
+        });
+
+    });
+
+    closeButtons.forEach((button)=>{
+
+        button.addEventListener("click",()=>{
+
+            button.closest(".modal")
+                .style.display = "none";
+
+        });
+
+    });
+
+    window.addEventListener("click",(e)=>{
+
+        modals.forEach((modal)=>{
+
+            if(e.target === modal){
+
+                modal.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+    // ================= REVEAL =================
+
+    const reveals =
+        document.querySelectorAll(".reveal");
+
+    function revealSections(){
+
+        reveals.forEach((reveal)=>{
+
+            const windowHeight =
+                window.innerHeight;
+
+            const revealTop =
+                reveal.getBoundingClientRect().top;
+
+            const revealPoint = 100;
+
+            if(revealTop < windowHeight - revealPoint){
+
+                reveal.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        revealSections
+    );
+
+    revealSections();
+
+</script>
+
+</body>
+</html>
