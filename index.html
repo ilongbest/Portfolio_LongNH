@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Nguyen Long | Backend Developer</title>
 
-    <!-- GOOGLE FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -14,13 +13,30 @@
             rel="stylesheet"
     />
 
-    <!-- FONT AWESOME -->
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
 
     <style>
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            transform: translateX(-5px);
+        }
 
         :root{
             --bg:#07130f;
@@ -100,7 +116,7 @@
         }
 
         .navbar{
-            height:85px;
+            height:95px;
             display:flex;
             justify-content:space-between;
             align-items:center;
@@ -459,8 +475,8 @@
         }
 
         .avatar-box{
-            width:390px;
-            height:390px;
+            width:340px;
+            height:450px;
             border-radius:35px;
             overflow:hidden;
             position:relative;
@@ -741,6 +757,17 @@
             align-items:center;
         }
 
+        /* Chỉnh sửa kiểu hiển thị cho thẻ liên kết trong contact-item */
+        .contact-item a{
+            text-decoration:none;
+            color:inherit;
+            transition:color 0.25s ease;
+        }
+
+        .contact-item a:hover p{
+            color:var(--primary);
+        }
+
         .contact-item i{
             width:55px;
             height:55px;
@@ -754,6 +781,7 @@
 
         .contact-item p{
             color:var(--gray);
+            transition:color 0.25s ease;
         }
 
         .form-group{
@@ -763,6 +791,7 @@
         .form-group input,
         .form-group textarea{
             width:100%;
+            padding:166px;
             padding:16px;
             border-radius:14px;
             border:1px solid rgba(255,255,255,0.06);
@@ -859,7 +888,9 @@
             }
 
             .hero-content{
-                text-align:center;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .hero-buttons{
@@ -871,7 +902,10 @@
             }
 
             .terminal-bar{
-                justify-content:center;
+                display: flex;
+                gap: 8px;
+                margin-bottom: 25px;
+                align-self: flex-start;
             }
 
         }
@@ -900,8 +934,8 @@
             }
 
             .avatar-box{
-                width:290px;
-                height:290px;
+                width:260px;
+                height:345px;
             }
 
             .stats{
@@ -922,13 +956,15 @@
 </head>
 <body>
 
-<!-- HEADER -->
-
 <header>
 
     <div class="container navbar">
 
-        <div class="logo">LongDev.</div>
+        <div class="logo">
+            <a href="#home">
+                <img src="logo.png" alt="LongDev Logo">
+            </a>
+        </div>
 
         <ul class="nav-links">
 
@@ -948,30 +984,18 @@
 
 </header>
 
-<!-- HERO -->
-
 <section class="hero" id="home">
-
-    <!-- MATRIX BACKGROUND -->
 
     <div class="code-background" id="matrix"></div>
 
-    <!-- CYBER GRID -->
-
     <div class="cyber-grid"></div>
 
-    <!-- SCAN -->
-
     <div class="scan-line"></div>
-
-    <!-- GLOW -->
 
     <div class="glow glow1"></div>
     <div class="glow glow2"></div>
 
     <div class="container hero-container">
-
-        <!-- CONTENT -->
 
         <div class="hero-content">
 
@@ -1017,15 +1041,11 @@
 
         </div>
 
-        <!-- AVATAR -->
-
         <div class="hero-image">
-
-            <!-- Đặt avatar.png cùng thư mục -->
 
             <div class="avatar-box">
 
-                <img src="avatar.png" alt="Avatar">
+                <img src="img.png" alt="Avatar">
 
             </div>
 
@@ -1034,8 +1054,6 @@
     </div>
 
 </section>
-
-<!-- ABOUT -->
 
 <section id="about" class="reveal">
 
@@ -1125,8 +1143,6 @@
 
 </section>
 
-<!-- SKILLS -->
-
 <section id="skills" class="reveal">
 
     <div class="container">
@@ -1194,8 +1210,6 @@
 
 </section>
 
-<!-- PROJECTS -->
-
 <section id="projects" class="reveal">
 
     <div class="container">
@@ -1211,8 +1225,6 @@
         </div>
 
         <div class="project-grid">
-
-            <!-- PROJECT 1 -->
 
             <div class="project-card">
 
@@ -1239,8 +1251,6 @@
 
             </div>
 
-            <!-- PROJECT 2 -->
-
             <div class="project-card">
 
                 <div class="project-top">
@@ -1266,13 +1276,36 @@
 
             </div>
 
+            <div class="project-card">
+
+                <div class="project-top">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>StudyHub</h3>
+
+                    <p>
+                        An education platform designed for student collaboration,
+                        resource sharing, and academic management.
+                    </p>
+
+                    <button class="project-btn" data-modal="modal3">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
 </section>
-
-<!-- CONTACT -->
 
 <section id="contact" class="reveal">
 
@@ -1300,7 +1333,18 @@
 
                     <div>
                         <h4>Email</h4>
-                        <p>example@gmail.com</p>
+                        <p>long15071nh@gmail.com</p>
+                    </div>
+
+                </div>
+
+                <div class="contact-item">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <div>
+                        <h4>Phone</h4>
+                        <p>0969474562</p>
                     </div>
 
                 </div>
@@ -1311,7 +1355,9 @@
 
                     <div>
                         <h4>GitHub</h4>
-                        <p>github.com/yourgithub</p>
+                        <a href="https://github.com/ilongbest" target="_blank">
+                            <p>github.com/ilongbest</p>
+                        </a>
                     </div>
 
                 </div>
@@ -1360,15 +1406,11 @@
 
 </section>
 
-<!-- FOOTER -->
-
 <footer>
 
     © 2026 Nguyen Long | Backend Developer Portfolio
 
 </footer>
-
-<!-- MODAL 1 -->
 
 <div class="modal" id="modal1">
 
@@ -1401,8 +1443,6 @@
 
 </div>
 
-<!-- MODAL 2 -->
-
 <div class="modal" id="modal2">
 
     <div class="modal-content">
@@ -1432,7 +1472,36 @@
 
 </div>
 
-<!-- JAVASCRIPT -->
+<div class="modal" id="modal3">
+
+    <div class="modal-content">
+
+        <span class="close-btn">&times;</span>
+
+        <h2>StudyHub</h2>
+
+        <p>
+            An advanced education portal tailored for community engagement,
+            course track visualization, and secure multi-role permission handling.
+        </p>
+
+        <ul>
+
+            <li>Spring Boot & Hibernate</li>
+
+            <li>Role-based Access Control (RBAC)</li>
+
+            <li>Real-time Notification Architecture</li>
+
+            <li>PostgreSQL Schema Optimization</li>
+
+            <li>RESTful Microservices Pattern</li>
+
+        </ul>
+
+    </div>
+
+</div>
 
 <script>
 
